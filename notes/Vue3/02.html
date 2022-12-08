@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <ul>
+        <li v-for="food in foods">
+          <img v-bind:src="food.image" />
+          <span>{{food.name}}</span>
+          <input type="checkbox" v-model="food.purchased" />
+          <span>{{food.purchased}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            title: "零食清单",
+            foods: [
+              {
+                id: 1,
+                name: "原味鱿鱼丝",
+                image: "./images/原味鱿鱼丝.png",
+                purchased: false,
+              },
+              {
+                id: 2,
+                name: "辣味鱿鱼丝",
+                image: "./images/辣味鱿鱼丝.png",
+                purchased: false,
+              },
+              {
+                id: 3,
+                name: "炭烧味鱿鱼丝",
+                image: "./images/炭烧味鱿鱼丝.png",
+                purchased: false,
+              },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

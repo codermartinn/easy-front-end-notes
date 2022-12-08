@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>01</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 插值表达式引用data函数返回的对象里的数据 -->
+      <h1>{{title}}</h1>
+    </div>
+
+    <script>
+      // createApp({})可选参数是一个对象
+      // 创建应用后，还要告诉vue：新的应用实例需要挂载到DOM的哪个位置
+      // 注意：应用实例知识挂载到DOM的一个标签上
+      Vue.createApp({
+        data() {
+          // 返回一个对象
+          return {
+            // 对象里存放数据
+            title: "零食清单",
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

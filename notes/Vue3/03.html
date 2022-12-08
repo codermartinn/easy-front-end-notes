@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>03</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <section v-show="beforeBuy.length">
+        <h2>未购零食</h2>
+        <ul>
+          <li v-for="food in beforeBuy" :key="food.id">
+            <img v-bind:src="food.image" />
+            <span>{{ food.name }}</span>
+            <input type="checkbox" v-model="food.purchased" />
+          </li>
+        </ul>
+      </section>
+
+      <section v-show="afterBuy.length">
+        <h2>已购零食</h2>
+        <ul>
+          <li v-for="food in afterBuy" v-bind:key="food.id">
+            <img v-bind:src="food.image" />
+            <span>{{ food.name }}</span>
+            <input type="checkbox" v-model="food.purchased" />
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            foods: [
+              {
+                id: 1,
+                name: "原味鱿鱼丝",
+                image: "./images/原味鱿鱼丝.png",
+                purchased: false,
+              },
+              {
+                id: 2,
+                name: "辣味鱿鱼丝",
+                image: "./images/辣味鱿鱼丝.png",
+                purchased: false,
+              },
+              {
+                id: 3,
+                name: "炭烧味鱿鱼丝",
+                image: "./images/炭烧味鱿鱼丝.png",
+                purchased: false,
+              },
+            ],
+          };
+        },
+        computed: {
+          beforeBuy() {
+            return this.foods.filter((item) => !item.purchased);
+          },
+          afterBuy() {
+            return this.foods.filter((item) => item.purchased);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
